@@ -1,0 +1,15 @@
+.editor-container {
+   /* Color */
+   background-color: white;
+
+   margin: 2rem;
+
+   border-radius: 8px;
+}
+
+.textbox {
+   font-size: 14pt;
+   font-family: 'Roboto';
+
+   padding: var(--default-padding)
+}

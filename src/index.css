@@ -1,0 +1,16 @@
+@import './assets/css/editor.css';
+@import './assets/css/toolbar.css';
+
+:root {
+   --default-padding: 1rem;
+}
+
+body, *, *::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   background-color: #EEEEEE;
+}

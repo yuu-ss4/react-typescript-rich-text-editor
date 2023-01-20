@@ -1,0 +1,27 @@
+.toolbar {
+   padding: var(--default-padding);
+   
+   border-bottom: 2px solid #CCC;
+}
+
+.toolbar-button {
+   /* Color */
+   color: #CCC;
+   
+   /* Sizing */
+   margin-bottom: .25rem;
+
+   /* Misc; */
+   cursor: pointer;
+
+   /* Animation */
+   transition: 250ms;
+}
+
+.toolbar-button:not(:first-child) {
+   margin-left: .5rem;
+}
+
+.toolbar-button:hover {
+   color: #777;
+}
