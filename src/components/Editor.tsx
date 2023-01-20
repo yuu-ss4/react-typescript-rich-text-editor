@@ -58,11 +58,27 @@ const initialValue: Descendant[] = [
    }
 ]
 
+const markMap = new Map([
+   ['bold', bold],
+   ['italic', italic],
+   ['underline', underline],
+   ['code', code],
+   ['quote', ic_format_quote],
+   ['list', list],
+   ['align_left', alignLeft],
+   ['align_center', alignCenter],
+   ['align_right', alignRight],
+   ['align_justify', alignJustify],
+   ['link2', link2]
+]);
+
+const markEntries = Array.from(markMap)
+
 const Editor:FC = () => {
    const [editor] = useState(() => withReact(createEditor()))
 
    const renderMarkIcon = (type: string, icon: any) => {
-      return <MarkButton type={type} icon={icon}/>
+      return <MarkButton key={type} type={type} icon={icon}/>
    }
 
    return (
@@ -70,17 +86,9 @@ const Editor:FC = () => {
          <Slate editor={editor} value={initialValue}>
             <div className="toolbar">
                <Toolbar>
-                  {renderMarkIcon('title', bold)} 
-                  {renderMarkIcon('title', italic)} 
-                  {renderMarkIcon('title', underline)} 
-                  {renderMarkIcon('title', code)} 
-                  {renderMarkIcon('title', ic_format_quote)} 
-                  {renderMarkIcon('title', list)} 
-                  {renderMarkIcon('title', alignLeft)} 
-                  {renderMarkIcon('title', alignCenter)} 
-                  {renderMarkIcon('title', alignRight)} 
-                  {renderMarkIcon('title', alignJustify)} 
-                  {renderMarkIcon('title', link2)} 
+                  {markEntries.map(entry => {
+                     return renderMarkIcon(entry[0], entry[1])
+                  })}
                </Toolbar>
             </div>
             <Editable className="textbox" />

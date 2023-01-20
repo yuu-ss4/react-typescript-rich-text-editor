@@ -2,7 +2,7 @@
 import { FC } from 'react';
 
 type Props = {
-   children: JSX.Element
+   children: JSX.Element | JSX.Element[]
 }
 
 const Toolbar:FC<Props> = (props) => {
