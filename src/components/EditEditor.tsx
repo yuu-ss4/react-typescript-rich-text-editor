@@ -29,7 +29,8 @@ import { Slate, Editable, withReact, DefaultElement } from 'slate-react';
 // Component Imports
 import Toolbar from './Toolbar';
 import FormatButton from './FormatButton';
-import Leaf from './Leaf';
+
+import Leaf from './Leaf'
 
 // Miscellaneous/Utils Imports
 import isHotKey from 'is-hotkey';
@@ -47,19 +48,11 @@ type CustomElement = {
    children: CustomText[];
 }
 
-declare module 'slate' {
-   interface CustomTypes {
-      Editor: BaseEditor & ReactEditor
-      Element: CustomElement
-      Text: CustomText
-   }
-}
-
-const initialValue: Descendant[] = [
+const initialValue = [
    {
       type: 'paragraph',
       children: [
-         { text: 'We need to go deeper.' },
+         { text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea modi suscipit molestiae odio sunt nihil dolore cum explicabo. Quam, accusantium!' },
       ]
    }
 ]
@@ -89,8 +82,6 @@ const EditEditor:FC = () => {
    }
 
    const toggleFormat = (editor: ReactEditor, type: string): void => {
-
-
       const isActive = isMarkActive(editor, type)
       if (isActive) {
          Editor.removeMark(editor, type)

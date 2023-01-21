@@ -1,11 +1,11 @@
 // Components
-import Editor from './components/Editor';
+import EditEditor from './components/EditEditor';
 
 // Styles
 import './App.css'
 
 function App() {
-  return <Editor />;
+  return <EditEditor />;
 }
 
 export default App
