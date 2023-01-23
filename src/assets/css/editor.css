@@ -11,7 +11,7 @@
    font-size: 14pt;
    font-family: 'Roboto';
 
-   padding: var(--default-padding)
+   padding: var(--default-padding);
 }
 
 .quote-element {

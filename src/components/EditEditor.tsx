@@ -19,8 +19,7 @@ import { FC } from 'react';
 import { useState, useCallback, useMemo } from 'react';
 
 // Slate Modules/Types
-import { BaseEditor, Descendant } from 'slate';
-import { ReactEditor, RenderElementProps } from 'slate-react';
+import { ReactEditor } from 'slate-react';
 
 // Slate Imports
 import { createEditor, Editor, Transforms } from 'slate';
@@ -33,38 +32,10 @@ import MarkButton from './MarkButton';
 import BlockButton from './BlockButton';
 import QuoteBlock from './blocks/QuoteBlock';
 import CodeBlock from './blocks/CodeBlock';
+import Leaf from './leaf/Leaf'
 
-import Leaf from './Leaf'
-
-// Miscellaneous/Utils Imports
-import isHotKey from 'is-hotkey';
-import { getActiveStyles, toggleStyle } from '../utils/EditorUtils';
-
-type CustomText = {
-   text: string;
-}
-
-type CustomElement = {
-   type: null | 'paragraph'; 
-   children: CustomText[];
-}
-
-declare module 'slate' {
-   interface CustomTypes {
-      Editor: BaseEditor & ReactEditor
-      Element: CustomElement
-      Text: CustomText
-   }
-}
-
-const initialValue: Descendant[] = [
-   {
-      type: 'paragraph',
-      children: [
-         { text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.' },
-      ],
-   }
-]
+// Utils Import
+import { initialValue } from '../utils/InitialValue';
 
 const EditEditor:FC = () => {
    const editor = useMemo(() => withHistory(withReact(createEditor())), [])
@@ -103,8 +74,6 @@ const EditEditor:FC = () => {
    const renderElement = useCallback((props: any): JSX.Element => {
       const { element, children, attributes } = props;
 
-      console.log(attributes)
-
       switch (element.type) {
          case 'paragraph':
             return <p {...attributes}>{children}</p>
@@ -131,10 +100,6 @@ const EditEditor:FC = () => {
                   <MarkButton type='underline' icon={underline} toggleMark={toggleMark} />
                   <BlockButton type='code' icon={code} toggleBlock={toggleBlock} />
                   <BlockButton type='quote' icon={ic_format_quote} toggleBlock={toggleBlock} />
-                  <BlockButton type='align_left' icon={alignLeft} toggleBlock={toggleBlock} />
-                  <BlockButton type='align_center' icon={alignCenter} toggleBlock={toggleBlock} />
-                  <BlockButton type='align_right' icon={alignRight} toggleBlock={toggleBlock} />
-                  <BlockButton type='align_justify' icon={alignJustify} toggleBlock={toggleBlock} />
                </Toolbar>
             </div>
             <Editable
