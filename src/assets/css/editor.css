@@ -13,3 +13,13 @@
 
    padding: var(--default-padding)
 }
+
+.quote-element {
+   border-left: 2px solid #AAA;
+   color: #AAA;
+   font-style: italic;
+}
+
+.code-element {
+   background: #EEE;
+}

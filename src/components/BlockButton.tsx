@@ -22,14 +22,14 @@ import { } from './EditEditor'
 interface Props {
    type: string;
    icon: any;
-   toggleFormat: (editor: any, type: string) => void;
+   toggleBlock: (editor: any, type: string) => void;
 }
 
 // 1. Click on mark button
 // 2. Check the type of the mark
 // 3. 
 
-const FormatButton:FC<Props> = ({type, icon, toggleFormat}) => {
+const BlockButton:FC<Props> = ({type, icon, toggleBlock}) => {
    const editor = useSlate()
 
    return (
@@ -37,7 +37,7 @@ const FormatButton:FC<Props> = ({type, icon, toggleFormat}) => {
          className="toolbar-button"
          onMouseDown={(event: MouseEvent) => {
             event.preventDefault()
-            toggleFormat(editor, type)
+            toggleBlock(editor, type)
          }}
       >
          <Icon icon={icon} size='20px' color='red'/>
@@ -45,4 +45,4 @@ const FormatButton:FC<Props> = ({type, icon, toggleFormat}) => {
    )
 }
 
-export default FormatButton
+export default BlockButton
